@@ -1,0 +1,17 @@
+<h1>Addition of two numbers</h1>
+<br/>
+<form method="post">
+	{% csrf_token %}
+	<label>Number1</label>
+		<input type = 'number' name = 'num1'/>
+		<br/>
+		<br/>
+		<br/>
+	<label>Number2</label>
+		<input type = 'number' name = 'num2'/>
+	<br/>
+	<br/>
+	<input type = 'submit' name = 'Sum'/>
+</form>
+<h3>The sum is : </h3>
+{{ value }}
