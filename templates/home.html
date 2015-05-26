@@ -1,3 +1,12 @@
 <HTML>
-	<h1>"HELLO WORLD"</h1>
-</HTML>	
+	<h1>All Posts</h1>
+	{% for all_post in posts %}
+		<h3>{{ all_post.title }}</h3>
+			Posted by : {{ all_post.user }}
+		<p>{{ all_post.post }}</>
+		<br/>
+	{% endfor %}
+	<br/>
+	<h4><a href="../add/"> Add Post </a></h4>
+	<h4><a href="../admin/"> Admin </a></h4>
+</HTML>		

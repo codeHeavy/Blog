@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from forms import AddForm
+from .forms import AddForm
+from .models import BlogPost
 # Create your views here.
 
 def home_view(request):
-	return render(request,"home.html")
+	send_dict = {}
+	send_dict['posts'] = BlogPost.objects.all().order_by("-id")
+	return render(request,"home.html",send_dict)
 	#return HttpResponse(int(num1) + int(num2))
 	
 def sum_view(request):
@@ -35,19 +38,24 @@ def form_sum_view(request):
 	
 def django_form_view(request):
 	send_dict = {}
+	bp = BlogPost()
 	form = AddForm()
-	title = "Enter title"
-	post = "Enter the post"
+	#title = "Enter title"
+	#post = "Enter the post"
+	
 	if request.POST:
 		form = AddForm(request.POST)
 		if form.is_valid():
-			title = form.cleaned_data['title']
-			post = form.cleaned_data['post']
-			print title,"\n",post
+			#bp.title = form.cleaned_data['title']
+			#bp.post = form.cleaned_data['post']
+			#bp.user = form.cleaned_data['user']
+			#bp.save()
+			form.save()
+			#print title,"\n",post,'\n',user
 			#print "\n the form is valid"
 		else:
 			print "\n the form is invalid"		
 	send_dict["value"] = form
-	send_dict["title"] = title
-	send_dict["post"] = post
-	return render(request,"forms2.html",send_dict)
+	#send_dict["title"] = title
+	#send_dict["post"] = post
+	return render(request,"add.html",send_dict)

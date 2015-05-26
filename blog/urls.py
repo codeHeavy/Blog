@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^home/','blog_post.views.home_view'),
     url(r'^sum/','blog_post.views.sum_view'),
     url(r'^formsum/','blog_post.views.form_sum_view'),
-    url(r'^form/','blog_post.views.django_form_view')
+    url(r'^add/','blog_post.views.django_form_view')
 ]

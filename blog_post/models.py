@@ -5,3 +5,4 @@ from django.db import models
 class BlogPost(models.Model):
 	title = models.CharField(max_length = 50)
 	post = models.TextField()
+	user = models.CharField(max_length = 20)

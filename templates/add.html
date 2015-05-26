@@ -1,0 +1,6 @@
+<a href="../home/"> Home </a>
+<form method = "post">
+	{% csrf_token %}
+	{{ value.as_p }}
+	<input type = "submit" name = "Submit" />
+</form>
