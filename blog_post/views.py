@@ -6,7 +6,7 @@ from .models import BlogPost
 
 def home_view(request):
 	send_dict = {}
-	send_dict['posts'] = BlogPost.objects.all().order_by("-id")
+	send_dict['posts'] = BlogPost.objects.filter(post__contains="college").order_by("-id")
 	return render(request,"home.html",send_dict)
 	#return HttpResponse(int(num1) + int(num2))
 	
@@ -46,6 +46,7 @@ def django_form_view(request):
 	if request.POST:
 		form = AddForm(request.POST)
 		if form.is_valid():
+			form = AddForm(request.POST)
 			#bp.title = form.cleaned_data['title']
 			#bp.post = form.cleaned_data['post']
 			#bp.user = form.cleaned_data['user']
